@@ -1,0 +1,38 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/work",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/resume",
+      "destination": "/resume.pdf",
+      "permanent": false
+    }
+  ]
+}
