@@ -5,8 +5,8 @@
  *
  * Runs as a Vercel serverless function in the deployed site, and is mounted
  * by server.js locally. It reads Behance's public RSS feed (the profile page
- * itself refuses scripts) and Vercel's edge caches the answer for an hour,
- * so Behance is asked at most once an hour however busy the site is.
+ * itself refuses scripts) and Vercel's edge caches the answer for 1 minute,
+ * so Behance is asked at most once a minute however busy the site is.
  *
  *   { "items": [{ "id", "title", "link", "cover" }] }
  *
@@ -65,7 +65,7 @@ module.exports = async function handler(req, res) {
     if (!r.ok) throw new Error(`feed answered ${r.status}`);
     const items = parse(await r.text());
     if (!items.length) throw new Error('feed had no projects');
-    send(200, { items }, 'public, s-maxage=3600, stale-while-revalidate=86400');
+    send(200, { items }, 'public, s-maxage=60, stale-while-revalidate=30');
   } catch (err) {
     send(502, { error: String(err.message || err) }, 'no-store');
   }
