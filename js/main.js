@@ -788,11 +788,16 @@
   reveals();
   counters();
   parallax();
-  tilt();
   magnetic();
   progress();
   nav();
   anchors();
-  carousels();
   videoSwap();
+
+  // The work cards may still change to match Behance (behance-sync.js);
+  // wire the cards and start the carousels once they are final.
+  Promise.resolve(window.BEHANCE_SYNC).then(function () {
+    tilt();
+    carousels();
+  });
 })();
